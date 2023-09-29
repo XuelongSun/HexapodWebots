@@ -1,0 +1,79 @@
+<robot name="leg">
+    <link name="base_link">
+        <!-- <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.01"/>
+            </geometry>
+        </visual> -->
+    </link>
+    
+    <link name="coxa_link">
+        <visual>
+            <origin xyz="0.05 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.1 0.01 0.01"/>
+            </geometry>
+        </visual>
+        <material name="blue">
+            <color rgba="0 0 0.8 1"/>
+        </material>
+    </link>
+
+    <link name="femur_link">
+        <visual>
+            <origin xyz="0.08 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.16 0.015 0.015"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <joint name="body_coxa" type="revolute">
+        <parent link="base_link"/>
+        <child link="coxa_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 0 1"/>
+        <limit lower="-1.92" upper="1.92" />
+    </joint>
+
+    <joint name="coxa_femur" type="revolute">
+        <parent link="coxa_link"/>
+        <child link="femur_link"/>
+        <axis xyz="0 1 0"/>
+        <origin xyz="0.1 0 0" rpy="0 0 0"/>
+        <limit lower="-1.92" upper="1.92" />
+    </joint>
+    
+    <link name="tibia_link">
+        <visual>
+            <origin xyz="0.06 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.12 0.02 0.02"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="femur_tibia" type="revolute">
+        <parent link="femur_link"/>
+        <child link="tibia_link"/>
+        <axis xyz="0 1 0"/>
+        <origin xyz="0.16 0 0" rpy="0 0 0"/>
+        <limit lower="-1.92" upper="1.92" />
+    </joint>
+
+    <link name="end">
+		<visual>
+          <origin xyz="0.005 0 0" rpy="0 0 0" />
+          	<geometry>
+            	<sphere radius="0.01" />
+			</geometry>
+		</visual>	
+	</link>
+    <joint name="end_joint" type="revolute">
+        <parent link="tibia_link"/>
+        <child link="end"/>
+        <axis xyz="1 0 0"/>
+        <origin xyz="0.12 0 0" rpy="0 0 0"/>
+        <limit lower="-1.92" upper="1.92" />
+    </joint>
+</robot>

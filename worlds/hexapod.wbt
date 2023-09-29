@@ -1,0 +1,1009 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Parquetry.proto"
+
+WorldInfo {
+  contactProperties [
+    ContactProperties {
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.2299839409567127 0.44952773840837007 0.8631524774357512 1.0701189250924048
+  position 1.225467979647219 -5.458273238549019 1.0061464863666494
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+}
+Robot {
+  translation 2.3645435417138723 -3.5030411531688683 0.08168863817306898
+  rotation 0.16413510155080152 -0.791095184562271 -0.5892606192520371 0.007898900102479086
+  children [
+    DEF Body Transform {
+      rotation 0 0 1 -0.523595307179586
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.333333 0.666667 1
+            roughness 0.8
+            metalness 0.2
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.2
+            subdivision 6
+          }
+        }
+      ]
+    }
+    DEF LeftEye Transform {
+      translation -0.05 0.18 0
+      rotation 1 0 0 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+          }
+          geometry Cylinder {
+            height 0.012
+            radius 0.01
+          }
+        }
+      ]
+    }
+    DEF RightEye Transform {
+      translation 0.05 0.18 0
+      rotation 1 0 0 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+          }
+          geometry Cylinder {
+            height 0.012
+            radius 0.01
+          }
+        }
+      ]
+    }
+    DEF Leg0MR Transform {
+      translation 0.2 0 0
+      children [
+        DEF JointBC Transform {
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.024
+                radius 0.015
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position -0.10483275267606375
+            axis 0 0 1
+          }
+          device [
+            RotationalMotor {
+              name "M_MR_COXA"
+            }
+            PositionSensor {
+              name "S_MR_COXA"
+            }
+          ]
+          endPoint Solid {
+            translation 0.04972550387790732 -0.0052320420572025215 0
+            rotation 0 0 -1 0.10483275267606561
+            children [
+              DEF SHAPE_COXA Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 1 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.1 0.02 0.02
+                }
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -0.24331494393628628
+                  axis 0 1 0
+                  anchor 0.05 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "M_MR_FEMUR"
+                  }
+                  PositionSensor {
+                    name "S_MR_FEMUR"
+                  }
+                ]
+                endPoint Solid {
+                  translation 0.12764357347797547 0 0.01927369963370265
+                  rotation 0 -1 0 0.24331494393628575
+                  children [
+                    DEF JointFT Transform {
+                      translation 0.09 3.44753e-13 -1.87713e-07
+                      rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            height 0.024
+                            radius 0.015
+                          }
+                        }
+                      ]
+                    }
+                    DEF SHAPE_FEMUR Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.666667 1 1
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Box {
+                        size 0.16 0.02 0.02
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        position 1.5869310150669096
+                        axis 0 1 0
+                        anchor 0.09 0 0
+                      }
+                      device [
+                        RotationalMotor {
+                          name "M_MR_TIBIA"
+                        }
+                        PositionSensor {
+                          name "S_MR_TIBIA"
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0.08887062082398225 0 -0.06999088871186579
+                        rotation 0 1 0 1.5869310150669096
+                        children [
+                          DEF SHAPE_TIBIA Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.666667 1 1
+                              roughness 1
+                              metalness 0
+                            }
+                            geometry Box {
+                              size 0.12 0.02 0.02
+                            }
+                          }
+                        ]
+                        boundingObject USE SHAPE_TIBIA
+                        physics Physics {
+                          density -1
+                          mass 0.6
+                        }
+                        linearVelocity 0.0039120936483024804 0.11772613676937142 0.01009986479570982
+                        angularVelocity 0.3303322661469695 -0.21425564337116598 0.3992233310422333
+                      }
+                    }
+                  ]
+                  boundingObject USE SHAPE_FEMUR
+                  physics Physics {
+                    density -1
+                    mass 0.8
+                  }
+                  linearVelocity -0.0028317482535110154 0.05947686300570894 -0.042368093088782595
+                  angularVelocity 0.28217117760189797 -0.611117806702247 0.4030115922428627
+                }
+              }
+              DEF JointCF Transform {
+                translation 0.05 0 0
+                rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                children [
+                  Shape {
+                    geometry Cylinder {
+                      height 0.024
+                      radius 0.015
+                    }
+                  }
+                ]
+              }
+            ]
+            boundingObject USE SHAPE_COXA
+            physics Physics {
+              density -1
+              mass 0.8
+            }
+            linearVelocity 0.0027463023843801613 0.01352270886882237 -0.0914245246706967
+            angularVelocity 0.33997579275597134 -0.13595841574984194 0.39847919141804666
+          }
+        }
+      ]
+    }
+    DEF Leg1FR Transform {
+      translation 0.1 0.1732 0
+      rotation 0 0 1 1.0472
+      children [
+        DEF JointBC Transform {
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.024
+                radius 0.015
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position 0.047038109399756826
+            axis 0 0 1
+          }
+          device [
+            RotationalMotor {
+              name "M_FR_COXA"
+            }
+            PositionSensor {
+              name "S_FR_COXA"
+            }
+          ]
+          endPoint Solid {
+            translation 0.04994469560486475 0.00235103826796606 0
+            rotation 0 0 1 0.047038109399759026
+            children [
+              DEF SHAPE_COXA Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 1 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.1 0.02 0.02
+                }
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -0.2179526367653022
+                  axis 0 1 0
+                  anchor 0.05 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "M_FR_FEMUR"
+                  }
+                  PositionSensor {
+                    name "S_FR_FEMUR"
+                  }
+                ]
+                endPoint Solid {
+                  translation 0.12810737591946725 0 0.01729849204337038
+                  rotation 0 -1 0 0.2179526367653012
+                  children [
+                    DEF JointFT Transform {
+                      translation 0.09 3.44753e-13 -1.87713e-07
+                      rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            height 0.024
+                            radius 0.015
+                          }
+                        }
+                      ]
+                    }
+                    DEF SHAPE_FEMUR Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.666667 1 1
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Box {
+                        size 0.16 0.02 0.02
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        position 1.3352371343845995
+                        axis 0 1 0
+                        anchor 0.09 0 0
+                      }
+                      device [
+                        RotationalMotor {
+                          name "M_FR_TIBIA"
+                        }
+                        PositionSensor {
+                          name "S_FR_TIBIA"
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0.1063370740202671 0 -0.06806687896808783
+                        rotation 0 1 0 1.3352371343845997
+                        children [
+                          DEF SHAPE_TIBIA Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.666667 1 1
+                              roughness 1
+                              metalness 0
+                            }
+                            geometry Box {
+                              size 0.12 0.02 0.02
+                            }
+                          }
+                        ]
+                        boundingObject USE SHAPE_TIBIA
+                        physics Physics {
+                          density -1
+                          mass 0.6
+                        }
+                        linearVelocity -0.004038884295962731 -0.032566046852705685 0.1013711019607671
+                        angularVelocity 0.17390104747381407 -0.051527663048027084 -0.05907256032807917
+                      }
+                    }
+                  ]
+                  boundingObject USE SHAPE_FEMUR
+                  physics Physics {
+                    density -1
+                    mass 0.8
+                  }
+                  linearVelocity -0.006878284432832057 -0.02748904524437458 0.03756598428243679
+                  angularVelocity 0.5991309155089012 -0.2747033173754544 -0.055811168023576316
+                }
+              }
+              DEF JointCF Transform {
+                translation 0.05 0 0
+                rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                children [
+                  Shape {
+                    geometry Cylinder {
+                      height 0.024
+                      radius 0.015
+                    }
+                  }
+                ]
+              }
+            ]
+            name "solid(1)"
+            boundingObject USE SHAPE_COXA
+            physics Physics {
+              density -1
+              mass 0.8
+            }
+            linearVelocity -0.008042149924396847 -0.013132832362553713 -0.03183322549800474
+            angularVelocity 0.3409479993239825 -0.14045977523900366 -0.05808070175652105
+          }
+        }
+      ]
+    }
+    DEF Leg2FL Transform {
+      translation -0.1 0.1732 0
+      rotation 0 0 1 2.0944
+      children [
+        DEF JointBC Transform {
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.024
+                radius 0.015
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position 0.05675362289195336
+            axis 0 0 1
+          }
+          device [
+            RotationalMotor {
+              name "M_FL_COXA"
+            }
+            PositionSensor {
+              name "S_FL_COXA"
+            }
+          ]
+          endPoint Solid {
+            translation 0.04991949726879589 0.002836158040517673 0
+            rotation 0 0 1 0.05675362289195232
+            children [
+              DEF SHAPE_COXA Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 1 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.1 0.02 0.02
+                }
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -0.2834672324859806
+                  axis 0 1 0
+                  anchor 0.05 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "M_FL_FEMUR"
+                  }
+                  PositionSensor {
+                    name "S_FL_FEMUR"
+                  }
+                ]
+                endPoint Solid {
+                  translation 0.12680731793547198 0 0.022374894671468807
+                  rotation 0 -1 0 0.283467232485981
+                  children [
+                    DEF JointFT Transform {
+                      translation 0.09 3.44753e-13 -1.87713e-07
+                      rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            height 0.024
+                            radius 0.015
+                          }
+                        }
+                      ]
+                    }
+                    DEF SHAPE_FEMUR Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.666667 1 1
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Box {
+                        size 0.16 0.02 0.02
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        position 1.8191638490790178
+                        axis 0 1 0
+                        anchor 0.09 0 0
+                      }
+                      device [
+                        RotationalMotor {
+                          name "M_FL_TIBIA"
+                        }
+                        PositionSensor {
+                          name "S_FL_TIBIA"
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0.07279246683505702 0 -0.06785205083398285
+                        rotation 0 1 0 1.8191638490790178
+                        children [
+                          DEF SHAPE_TIBIA Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.666667 1 1
+                              roughness 1
+                              metalness 0
+                            }
+                            geometry Box {
+                              size 0.12 0.02 0.02
+                            }
+                          }
+                        ]
+                        boundingObject USE SHAPE_TIBIA
+                        physics Physics {
+                          density -1
+                          mass 0.6
+                        }
+                        linearVelocity 0.007230804691785093 0.017215002296793833 0.005862608694170437
+                        angularVelocity 0.7081377604581154 0.09667975029802989 -0.11539270473567109
+                      }
+                    }
+                  ]
+                  boundingObject USE SHAPE_FEMUR
+                  physics Physics {
+                    density -1
+                    mass 0.8
+                  }
+                  linearVelocity 0.006077867763783707 -0.0257572321379584 -0.028051340681722114
+                  angularVelocity 0.4861809556414376 -0.046319755543950736 -0.11468125902298212
+                }
+              }
+              DEF JointCF Transform {
+                translation 0.05 0 0
+                rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                children [
+                  Shape {
+                    geometry Cylinder {
+                      height 0.024
+                      radius 0.015
+                    }
+                  }
+                ]
+              }
+            ]
+            name "solid(2)"
+            boundingObject USE SHAPE_COXA
+            physics Physics {
+              density -1
+              mass 0.8
+            }
+            linearVelocity -0.0056607694721663646 -0.022993030126524483 -0.06764079113645674
+            angularVelocity 0.3408452442096778 -0.14101606799126945 -0.11398695074537384
+          }
+        }
+      ]
+    }
+    DEF Leg3ML Transform {
+      translation -0.2 0 0
+      rotation 0 0 1 -3.1415853071795863
+      children [
+        DEF JointBC Transform {
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.024
+                radius 0.015
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position -0.10253513905243015
+            axis 0 0 1
+          }
+          device [
+            RotationalMotor {
+              name "M_ML_COXA"
+            }
+            PositionSensor {
+              name "S_ML_COXA"
+            }
+          ]
+          endPoint Solid {
+            translation 0.04973739382732386 -0.005117778352528739 0
+            rotation 0 0 -1 0.1025351390524298
+            children [
+              DEF SHAPE_COXA Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 1 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.1 0.02 0.02
+                }
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -0.24462330847282754
+                  axis 0 1 0
+                  anchor 0.05 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "M_ML_FEMUR"
+                  }
+                  PositionSensor {
+                    name "S_ML_FEMUR"
+                  }
+                ]
+                endPoint Solid {
+                  translation 0.12761829000426694 0 0.0193752692062205
+                  rotation 0 -1 0 0.2446233084728268
+                  children [
+                    DEF JointFT Transform {
+                      translation 0.09 3.44753e-13 -1.87713e-07
+                      rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            height 0.024
+                            radius 0.015
+                          }
+                        }
+                      ]
+                    }
+                    DEF SHAPE_FEMUR Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.666667 1 1
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Box {
+                        size 0.16 0.02 0.02
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        position 1.5797955516059163
+                        axis 0 1 0
+                        anchor 0.09 0 0
+                      }
+                      device [
+                        RotationalMotor {
+                          name "M_ML_TIBIA"
+                        }
+                        PositionSensor {
+                          name "S_ML_TIBIA"
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0.08937006276599671 0 -0.06999716550747766
+                        rotation 0 1 0 1.5797955516059163
+                        children [
+                          DEF SHAPE_TIBIA Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.666667 1 1
+                              roughness 1
+                              metalness 0
+                            }
+                            geometry Box {
+                              size 0.12 0.02 0.02
+                            }
+                          }
+                        ]
+                        boundingObject USE SHAPE_TIBIA
+                        physics Physics {
+                          density -1
+                          mass 0.6
+                        }
+                        linearVelocity -0.00397130951718668 -0.12838375043353617 -0.29684724145103647
+                        angularVelocity 0.2923882128875987 -0.5428727386266164 0.3684469136014431
+                      }
+                    }
+                  ]
+                  boundingObject USE SHAPE_FEMUR
+                  physics Physics {
+                    density -1
+                    mass 0.8
+                  }
+                  linearVelocity -0.020969011847568844 -0.10356070512627005 -0.22060591135835889
+                  angularVelocity 0.26103331567642335 -0.8056388853772453 0.3706284829031928
+                }
+              }
+              DEF JointCF Transform {
+                translation 0.05 0 0
+                rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                children [
+                  Shape {
+                    geometry Cylinder {
+                      height 0.024
+                      radius 0.015
+                    }
+                  }
+                ]
+              }
+            ]
+            name "solid(3)"
+            boundingObject USE SHAPE_COXA
+            physics Physics {
+              density -1
+              mass 0.8
+            }
+            linearVelocity -0.0014947786297828882 -0.0512969803664451 -0.15537650720158075
+            angularVelocity 0.3400018543901339 -0.13634688218436009 0.3647464846506625
+          }
+        }
+      ]
+    }
+    DEF Leg4HL Transform {
+      translation -0.1 -0.1732 0
+      rotation 0 0 -1 2.09439
+      children [
+        DEF JointBC Transform {
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.024
+                radius 0.015
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position 0.04704044617007385
+            axis 0 0 1
+          }
+          device [
+            RotationalMotor {
+              name "M_HL_COXA"
+            }
+            PositionSensor {
+              name "S_HL_COXA"
+            }
+          ]
+          endPoint Solid {
+            translation 0.049944690110891206 0.0023511549772417886 0
+            rotation 0 0 0.9999999999999999 0.04704044617007393
+            children [
+              DEF SHAPE_COXA Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 1 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.1 0.02 0.02
+                }
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -0.2275717598428919
+                  axis 0 1 0
+                  anchor 0.05 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "M_HL_FEMUR"
+                  }
+                  PositionSensor {
+                    name "S_HL_FEMUR"
+                  }
+                ]
+                endPoint Solid {
+                  translation 0.1279373686481024 0 0.01804900463210615
+                  rotation 0 -1 0 0.22757175984289094
+                  children [
+                    DEF JointFT Transform {
+                      translation 0.09 3.44753e-13 -1.87713e-07
+                      rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            height 0.024
+                            radius 0.015
+                          }
+                        }
+                      ]
+                    }
+                    DEF SHAPE_FEMUR Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.666667 1 1
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Box {
+                        size 0.16 0.02 0.02
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        position 1.342508391146334
+                        axis 0 1 0
+                        anchor 0.09 0 0
+                      }
+                      device [
+                        RotationalMotor {
+                          name "M_HL_TIBIA"
+                        }
+                        PositionSensor {
+                          name "S_HL_TIBIA"
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0.1058417147493332 0 -0.06818386960125367
+                        rotation 0 1 0 1.342508391146334
+                        children [
+                          DEF SHAPE_TIBIA Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.666667 1 1
+                              roughness 1
+                              metalness 0
+                            }
+                            geometry Box {
+                              size 0.12 0.02 0.02
+                            }
+                          }
+                        ]
+                        boundingObject USE SHAPE_TIBIA
+                        physics Physics {
+                          density -1
+                          mass 0.6
+                        }
+                        linearVelocity 0.007293983806914062 0.008072955929525484 -0.005341749534589999
+                        angularVelocity -0.13750400756214176 0.10651061161741526 -0.061038726451084796
+                      }
+                    }
+                  ]
+                  boundingObject USE SHAPE_FEMUR
+                  physics Physics {
+                    density -1
+                    mass 0.8
+                  }
+                  linearVelocity 0.01068681483511754 -0.005790962810996829 -0.12835210195863767
+                  angularVelocity -1.161091276528973 0.6408777767929354 -0.06847074126391292
+                }
+              }
+              DEF JointCF Transform {
+                translation 0.05 0 0
+                rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                children [
+                  Shape {
+                    geometry Cylinder {
+                      height 0.024
+                      radius 0.015
+                    }
+                  }
+                ]
+              }
+            ]
+            name "solid(4)"
+            boundingObject USE SHAPE_COXA
+            physics Physics {
+              density -1
+              mass 0.8
+            }
+            linearVelocity 0.009087242854308075 -0.02618263302122851 -0.21435825854393908
+            angularVelocity 0.3407768387952317 -0.14036364700672546 -0.058172049642058646
+          }
+        }
+      ]
+    }
+    DEF Leg5HR Transform {
+      translation 0.1 -0.1732 0
+      rotation 0 0 -1 1.0472
+      children [
+        DEF JointBC Transform {
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.024
+                radius 0.015
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position 0.05675056264523676
+            axis 0 0 1
+          }
+          device [
+            RotationalMotor {
+              name "M_HR_COXA"
+            }
+            PositionSensor {
+              name "S_HR_COXA"
+            }
+          ]
+          endPoint Solid {
+            translation 0.04991950594790473 0.0028360052745267394 0
+            rotation 0 0 1 0.05675056264523373
+            children [
+              DEF SHAPE_COXA Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 1 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.1 0.02 0.02
+                }
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -0.2630233576257961
+                  axis 0 1 0
+                  anchor 0.05 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "M_HR_FEMUR"
+                  }
+                  PositionSensor {
+                    name "S_HR_FEMUR"
+                  }
+                ]
+                endPoint Solid {
+                  translation 0.12724866529109724 0 0.020800089200386174
+                  rotation 0 -1 0 0.26302335762579676
+                  children [
+                    DEF JointFT Transform {
+                      translation 0.09 3.44753e-13 -1.87713e-07
+                      rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            height 0.024
+                            radius 0.015
+                          }
+                        }
+                      ]
+                    }
+                    DEF SHAPE_FEMUR Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.666667 1 1
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Box {
+                        size 0.16 0.02 0.02
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        position 1.8017273926407333
+                        axis 0 1 0
+                        anchor 0.09 0 0
+                      }
+                      device [
+                        RotationalMotor {
+                          name "M_HR_TIBIA"
+                        }
+                        PositionSensor {
+                          name "S_HR_TIBIA"
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0.07397812195196005 0 -0.06814175976458005
+                        rotation 0 1 0 1.8017273926407333
+                        children [
+                          DEF SHAPE_TIBIA Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.666667 1 1
+                              roughness 1
+                              metalness 0
+                            }
+                            geometry Box {
+                              size 0.12 0.02 0.02
+                            }
+                          }
+                        ]
+                        boundingObject USE SHAPE_TIBIA
+                        physics Physics {
+                          density -1
+                          mass 0.6
+                        }
+                        linearVelocity 0.007639074555214381 -0.05249792905861282 -0.34049169463500767
+                        angularVelocity 0.2708825800501575 -0.185489610797689 -0.11325869915809131
+                      }
+                    }
+                  ]
+                  boundingObject USE SHAPE_FEMUR
+                  physics Physics {
+                    density -1
+                    mass 0.8
+                  }
+                  linearVelocity -0.0010226979710699566 -0.04440757168219865 -0.26115515761287666
+                  angularVelocity 0.9354853878136613 0.24737291315527765 -0.11656061407617965
+                }
+              }
+              DEF JointCF Transform {
+                translation 0.05 0 0
+                rotation 0.9999999999944944 2.3464099999870814e-06 -2.3464099999870814e-06 1.5708
+                children [
+                  Shape {
+                    geometry Cylinder {
+                      height 0.024
+                      radius 0.015
+                    }
+                  }
+                ]
+              }
+            ]
+            name "solid(5)"
+            boundingObject USE SHAPE_COXA
+            physics Physics {
+              density -1
+              mass 0.8
+            }
+            linearVelocity 0.007235976055798678 -0.017054841244448678 -0.17908378933850944
+            angularVelocity 0.3409232172750136 -0.14095239280774793 -0.11396085703579097
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+    density 500
+  }
+  controller "hexapod"
+  linearVelocity 0.0006024382169564173 -0.0198036813557962 -0.1232726449113561
+  angularVelocity 0.3405787228738721 -0.13920059858452183 0.06761013847864043
+}
